@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css" class="style">
+		body{
+			margin:0;
+		}
+		ul{
+			margin:0;
+			padding:0;
+			list-style: none;
+		}
+		li{
+			width:1366px;
+			height: 643px;
+			position: absolute;
+			opacity: 0;
+			z-index: -1;
+			
+		}
+		li div{
+			font:40px/1 "微软雅黑";
+			color: #fff;
+		}
+		li:nth-of-type(1){
+			background: url(img/ic_xnet9.jpg) no-repeat center center;
+			opacity: 1;
+			background-size:cover ;
+		}
+		li:nth-of-type(2){
+			background: url(img/bg_shoulei.jpg) no-repeat center center;
+			background-size:cover ;
+		}
+		li:nth-of-type(3){
+			background: url(img/bg_member.jpg) no-repeat center center;
+			background-size:cover ;
+		}
+		li:nth-of-type(4){
+			background: url(img/bg_xav.jpg) no-repeat center center;
+			background-size:cover ;
+		}
+		li>div{
+			text-align:center;
+		}
+		li>div>div:nth-of-type(1){
+			opacity: 0;
+		}
+		li>div>div:nth-of-type(2){
+			font:20px/1 "微软雅黑";
+			border:1px solid #ccc;
+			display: inline-block;
+			padding:5px 10px;
+			opacity: 0;
+		}
+		li:nth-of-type(1)>div{
+			position:absolute;
+			top:400px;
+			left:527px;
+		}
+		li:nth-of-type(2)>div{
+			position:absolute;
+			top:100px;
+			left:41%;
+			color:#000;
+		}
+		li:nth-of-type(2) div{
+			color:#000;
+			font:40px/1 "微软雅黑";
+		}
+		li:nth-of-type(2) span{
+			font:15px/30px "微软雅黑";
+			display: block;
+		}
+		li:nth-of-type(3)>div{
+			position:absolute;
+			top:141px;
+			left:52%;
+			margin-left: -18%;
+		}
+		li:nth-of-type(3)>div>div:nth-of-type(1){
+			font:30px/50px "微软雅黑";
+			letter-spacing: 15px;
+		}
+		li:nth-of-type(3)>div span{
+			font:50px/1 "微软雅黑";
+		}
+		li:nth-of-type(4)>div{
+			position:absolute;
+			top:50px;
+			left:54%;
+			margin-left: -18%;
+		}
+		img{
+			vertical-align: top;
+			border:none;
+		}
+		a{
+			text-decoration: none;
+			color:#fff;
+			padding:0;
+			margin:0;
+		}
+		.cler:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.wrap{
+			width:1366px;
+			height: 643px;
+			position:relative;
+		}
+		.nav img{
+			float: left;
+			width:130px;
+			height: 62px;
+			padding:13px 40px;
+		}
+		.nav nav{
+			float: right;
+			padding:32px 24px;
+		}
+		.nav nav a{
+			float: left;
+			font:15px/17px "微软雅黑";
+			margin:0px 55px 0 0;
+			padding-bottom: 10px;
+			text-indent: 42px;
+			position: relative;
+		}
+		/*.nav nav a:hover{
+			border:2px solid #fff;
+		}*/
+		.nav nav span{
+			position: absolute;
+			left: 0;
+			top:0;
+			width: 29px;
+			height: 19px;
+		}
+		.span1{
+			background: url(img/head_spr.png) no-repeat 0 0;
+		}
+		.span2{
+			background: url(img/head_spr.png) no-repeat -54px 0;
+		}
+		.span3{
+			background: url(img/head_spr.png) no-repeat 0 -24px;
+		}
+		.wrap>nav{
+			position: absolute;
+			bottom:60px;
+			left: 50%;
+			margin-left: -200px;
+			border-bottom:2px solid #ced0d9;
+		}
+		.wrap>nav a{
+			float: left;
+			width:68px;
+			height:68px;
+			margin:14px 14px -2px 14px;
+			border-bottom: 2px solid #ced0d9;
+		}
+		.wrap>nav a:nth-of-type(1){
+			background: url(img/much.png) no-repeat 0 0;
+		}
+		.wrap>nav a:nth-of-type(2){
+			background: url(img/much.png) no-repeat 0 0;
+		}
+		.wrap>nav a:nth-of-type(3){
+			background: url(img/much.png) no-repeat -214px 0 ; 
+		}
+		.wrap>nav a:nth-of-type(4){
+			background: url(img/much.png)  no-repeat -400px 0;
+		}
+		</style>
+		<script type="text/javascript" src="MTween.js">
+		</script>
+<script type="text/javascript">
+window.onload=function(){
+	var local=[0,0,"-214px","-400px"];
+	var wrap=document.querySelector(".wrap");
+	var navs=document.querySelectorAll(".wrap>nav a");
+	var lis=document.querySelectorAll("li");
+	var num=0;
+	var timer=0;
+	var txt1=document.querySelectorAll("li>div>div:nth-of-type(1)");
+//	console.log(txt1);
+	var txt2=document.querySelectorAll("li>div>div:nth-of-type(2)");
+//	console.log(txt2[1].innerHTML);
+//	console.log(lis);
+	nav();
+	timer=setInterval(nav,2000);
+	function nav(){
+		//大清洗
+		for(var i=0;i<navs.length;i++){
+			navs[i].style.background="";
+			lis[i].style.opacity=0;
+			navs[i].style.borderBottomColor="";
+			txt1[i].style.opacity=0;
+			txt2[i].style.width="50px";
+			txt2[i].style.opacity=0;
+		}
+		//给当前添加样式
+		navs[num].style.background="url(img/much.png) no-repeat "+local[num%local.length]+" -108px";
+		navs[num].style.borderBottomColor="#fff";
+		lis[num].style.opacity=1;
+		muchTween(txt1[num],{opacity:100},800,"linear",function(){
+			muchTween(txt2[num],{width:200,opacity:100},2000,"linear");
+		});
+		//样式循环出现
+		if(num<navs.length-1){
+			num++;
+		}else{
+			num=0;
+		}	
+		//文字变化：
+			
+		
+	}
+	
+	//给每一个导航添加移入事件
+	for(var i=0;i<navs.length;i++){
+		navs[i].index=i;
+		navs[i].onmouseover=function(){
+			clearInterval(timer);
+			num=this.index;
+			nav();
+		};
+		navs[i].onmouseout=function(){
+			timer=setInterval(nav,2000);
+		};
+	}
+};
+</script>
+	</head>
+	<body>
+	<section class="wrap">
+		<div class="nav clear">
+			<img src="img/n_logo.png"/>
+			<nav class="clear">
+				<a href="Javascript:;"><span class="span1"></span>产品中心</a>
+				<a href="Javascript:;"><span class="span2"></span>新闻中心</a>
+				<a href="Javascript:;"><span class="span3"></span>更多</a>
+			</nav>
+		</div>
+		<nav>
+			<a href="Javascript:;"></a>
+			<a href="Javascript:;"></a>
+			<a href="Javascript:;"></a>
+			<a href="Javascript:;"></a>
+		</nav>
+		<ul>
+			<li>
+				<div>
+					<div>精彩，一下就有</div>
+					<div>迅雷</div>
+				</div>
+			</li>
+			<li>
+				<div>
+					<div>炽热追速之心<span>没有wi-fi，也挡不住</span></div>
+					
+					<div>手机迅雷</div>
+				</div>
+			</li>
+			<li>
+				<div>
+					<div><span>快</span>，让生活<span>慢</span>下来</div>
+					<div>迅雷会员</div>
+				</div>
+			</li>
+			<li>
+				<div>
+					<div>流畅画质，乐无止境</div>
+					<div>迅雷影视</div>
+				</div>
+			</li>
+		</ul>
+	</section>
+	</body>
+</html>
